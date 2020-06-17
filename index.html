@@ -4,11 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>Super Hero Search</title>
+
 </head>
 <body>
-    
+    <!-- navbar and app title -->
+    <nav class="navbar is-dark has-padding-1" id="header" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <h1 class="title is-2 has-text-warning">Super Hero Search</h1>
+        </div>
+    </nav>
+
+    <!-- search bar -->
+    <div class="container level is-light" id="search-bar">
+        <h3 class="subtitle is-3">Search for your favorite super hero or find a random one</h3>
+        <form class="field is-grouped" id="search-form">
+            <button class="button is-success is-rounded" id="random-btn">Random</button>
+            <input type="submit" class="button is-primary is-rounded"></input> 
+            <input class="input is-rounded" id="search-input" type="text" placeholder="Search">
+        </form>
+    </div>
+
+    <!-- container for bio, chart and gif containers -->
+    <div class="container level" id="main-container">
+
+        <!-- Main info container for Pic, bio and powers, etc -->
+        <div class="column">
+            <div class="tile is-ancestor" id="main-info">
+                <div class="tile is-6 is-vertical is-parent">
+                    <article class="tile is-child box">
+                        <p class="subtitle">Gambit</p>
+                        <figure class="image is-4by3">
+                          <img src="https://vignette.wikia.nocookie.net/marvelanimated/images/a/ac/Gambit.jpg/revision/latest?cb=20140613060021" id="hero-pic">
+                        </figure>
+                      </article>
+                  <div class="tile is-child box">
+                    <p class="subtitle">Bio</p>
+                    <div id="bio-div"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut.</p></div>
+                  </div>
+                </div>
+                <div class="tile is-parent">
+                  <div class="tile is-child box">
+                    <p class="subtitle">Powers and Abilities</p>
+                    <div class="powers-div"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, .</p></div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        
+        <!-- Chart div to hold the stat chart and the key to the chart -->
+        <div class="column is-one-quarter box" id="chart-div">
+            <!-- uncomment canvas when the chart scripts and css is ready -->
+            <!-- <canvas id="canvas-content"> </canvas> -->
+
+            <!-- placeholder image of chart -->
+            <img src="development\placeholder chart.png">
+
+        </div>
+
+        <!-- gif container to hold gifs/gif carousel -->
+        <div class="column" id="gif-container">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-vertical">
+            <!-- placeholder gif -->
+
+                    <div class="tile is-child box">
+                        <figure class="image is-16by9">
+                            <iframe class="has-ratio" id="give-div" width="640" height="360" src="https://giphy.com/embed/xT9Igk31elskTPqDkc" frameborder="0" ></iframe>
+                          </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
 <script src="assets/script.js"></script>
