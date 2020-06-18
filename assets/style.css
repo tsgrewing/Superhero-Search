@@ -2,16 +2,35 @@
     background-color:rgb(79, 97, 114);
     
 }
-
 .tile.is-child {
     background-color: rgb(170, 175, 180);
 }
-
 #chart-div {
     background-color: rgb(170, 175, 180);
 } */
+#bio-div {
+    word-break: break-all;
+}
+#chart-div {
+    word-break: break-all;
+}
 
 #powers-div {
     text-align: center;
     /* display: flex; */
 }
+/* 
+.box {
+    margin:0;
+    border: 10px solid black;
+    padding: 0;
+}
+.column {
+    padding: 0;
+    margin: 0;
+}
+.tile {
+    margin: 0;
+    border: 10px solid black;
+    padding:0;
+} */
