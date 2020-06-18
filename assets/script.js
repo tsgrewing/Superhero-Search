@@ -10,10 +10,10 @@
         }).then(function(response) {
             console.log(response);
             // this section will populate the powers-div with the hero's powerstats
-            var powersDiv = $(".powers-div");
+            var chartDiv = $("#chart-div");
             var powerStats = JSON.stringify(response.results[0].powerstats);
             var powerPtag = $("<p>").text(powerStats);
-            powersDiv.append(powerPtag);
+            chartDiv.append(powerPtag);
             // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
             var biography = JSON.stringify(response.results[0].biography);
@@ -31,7 +31,9 @@
 
 // }
 
-// $("#submit-btn").on("click", displayHeroInfo);
+$("#submit-btn").on("click", function() {
+    console.log("search clicked")
+});
 
 //requires jQuery
 var hero = "superman"
