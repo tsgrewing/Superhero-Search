@@ -10,3 +10,8 @@
 #chart-div {
     background-color: rgb(170, 175, 180);
 } */
+
+.powers-div {
+    text-align: center;
+    display: flex;
+}
