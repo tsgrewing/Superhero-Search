@@ -1,6 +1,10 @@
+html {
+    background-color:#b6ac7785;
+
+}
+
 body{
     color: black;
-    background-color:#b6ac77cb;
     padding-bottom: 20px;
 }
 #bio-div {
@@ -47,22 +51,67 @@ ul {
 }
 
 .box {
+    background-image: url("old paper.png");
+    background-position: center;
+    background-blend-mode: luminosity;
     color:black;
-    background-color: rgb(255, 171, 102);
+    /* background-color: #02e1ff93; */
     border: 5px solid black;
     padding: 0 !important;
+    border-radius: 0px;
 }
 
 .gifbox {
-    background-color: black;
+    background-color: #000000;
+    background-blend-mode: darken;
 }
-/* 
-.column {
-    padding: 0;
-    margin: 0;
+#hero-name {
+    background-image: url("old paper.png");
+    background-position: center;
+    background-blend-mode: darken;
+    margin-bottom: .25rem;
+    background-color: #ffff0088;
+    margin-right: 5rem;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
 }
-.tile {
-    margin: 0;
-    border: 10px solid black;
-    padding:0;
-} */
+
+#bio-title {
+    background-image: url("old paper.png");
+    background-position: center;
+    background-blend-mode: darken;
+    background-color: #ffff0088;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    margin-bottom: .25rem;
+}
+
+#pub-title {
+    background-image: url("old paper.png");
+    background-position: center;
+    background-blend-mode: darken;
+    margin-bottom: .25rem;
+    background-color: #ffff0088;
+    margin-left: 5rem;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+}
+
+#bio-box {
+    background-color: #02e1ff93;
+}
+
+#pub-box {
+    background-color: #02ff1793;
+}
+
+#pic-box {
+    background-color: #ff9a0293;
+}
+
+#chart-box {
+    background-color: #fcef3ea6;
+}

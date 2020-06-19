@@ -33,18 +33,18 @@
         <div class="tile is-ancestor">
             <div class="tile" id="main-info">
                 <div class="tile is-6 is-vertical is-parent">
-                    <article class="tile is-child box">
+                    <article class="tile is-child box" id="pic-box">
                         <p class="subtitle has-text-weight-bold" id="hero-name"></p>
                         <figure class="image " id="hero-pic">
                         </figure>
                       </article>
-                  <div class="tile is-child box">
+                  <div class="tile is-child box" id="pub-box">
                     <p class="subtitle has-text-weight-bold" id="pub-title"></p>
                     <div id="pub-div"></div>
                   </div>
                 </div>
                 <div class="tile is-parent">
-                  <div class="tile is-child box">
+                  <div class="tile is-child box" id="bio-box">
                     <p class="subtitle has-text-weight-bold" id="bio-title"></p>
                     <div id="bio-div"></div>
                   </div>
@@ -57,7 +57,6 @@
             <div class="tile is-vertical is-parent is-3" id="gif-container">
                 <div class="tile is-child box gifbox">
                     <figure class="image" id="gif-div0">
-                        
                     </figure>
                 </div>
                 <div class="tile is-child box gifbox">
@@ -68,9 +67,8 @@
 
             <!-- gif container to hold gifs/gif carousel -->
             <div class="tile" id="chart-div">
-
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child box">
+                    <div class="tile is-child box" id="chart-box">
                         <canvas id="myChart"></canvas>
                     </div>
                     <div class="tile is-child box gifbox">

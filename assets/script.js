@@ -6,8 +6,11 @@ function displayHeroInfo() {
     var hero = $("#search-input").val(); 
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
-    //superhero API call
-    console.log(hero);
+
+    // Set Background of info divs
+    var backgroundColors = [];
+
+
     $.ajax({
         url: queryURLOne,
         method: "GET"
@@ -92,7 +95,17 @@ function displayHeroInfo() {
                 },
             
                 // Configuration options go here
-                options: {}
+                options: {
+                    scale: {
+                        gridLines: {
+                            color: 'black'
+                        },
+                        angleLines: {
+                            color: 'black'
+                        }
+                    }
+                    
+                }
             });
 
         });
