@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bangers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Walter+Turncoat&display=swap" rel="stylesheet">
     <title>Super Hero Search</title>
 
 </head>
@@ -30,8 +30,8 @@
     <div class="container level" id="main-container">
 
         <!-- Main info container for Pic, bio and powers, etc -->
-        <div class="column">
-            <div class="tile is-ancestor" id="main-info">
+        <div class="tile is-ancestor">
+            <div class="tile" id="main-info">
                 <div class="tile is-6 is-vertical is-parent">
                     <article class="tile is-child box">
                         <p class="subtitle has-text-weight-bold" id="hero-name"></p>
@@ -49,33 +49,39 @@
                     <div id="bio-div"></div>
                   </div>
                 </div>
-              </div>
-        </div>
+            </div>
+        
 
         
-        <!-- Chart div to hold the stat chart and the key to the chart -->
-        <div class="column is-one-quarter box" id="gif-container">
-
-            <figure class="image" id="gif-div">
-
-            </figure>
-        </div>
-
-        <!-- gif container to hold gifs/gif carousel -->
-        <div class="column" id="chart-div">
-            <div class="tile is-ancestor">
-                <div class="tile is-parent is-vertical">
-            <!-- placeholder gif -->
-
-                    <div class="tile is-child box">
-                        <canvas id="myChart"></canvas>
+            <!-- Chart div to hold the stat chart and the key to the chart -->
+            <div class="tile is-vertical is-parent is-3" id="gif-container">
+                <div class="tile is-child box gifbox">
+                    <figure class="image" id="gif-div0">
                         
-                    </div>
+                    </figure>
+                </div>
+                <div class="tile is-child box gifbox">
+                    <figure class="image" id="gif-div1">
+                    </figure>
                 </div>
             </div>
-        </div>
 
+            <!-- gif container to hold gifs/gif carousel -->
+            <div class="tile" id="chart-div">
+
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child box">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="tile is-child box gifbox">
+                        <figure class="image" id="gif-div2">
+                        </figure>
+                    </div>
+                </div>  
+            </div>
+        </div>
     </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

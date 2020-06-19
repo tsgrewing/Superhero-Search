@@ -23,7 +23,7 @@ function displayHeroInfo() {
             var biography = response.results[0].biography;
             var appearance = response.results[0].appearance;
             var connections = response.results[0].connections;
-            var bioList = $("<ul>").css("list-style-type", "disc");
+            var bioList = $("<ul>").css("list-style-type", "disc").css("list-style-position", "inside").css("margin-left", "10px");
             var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
             var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography.aliases.join(', '));
             var birthplace = $("<li>").html("<span class='has-text-weight-bold'>Birhtplace: </span>" + biography["place-of-birth"]);
@@ -39,7 +39,7 @@ function displayHeroInfo() {
 
             // Populate the Publication Div
             var pubDiv = $("#pub-div");
-            var pubList = $("<ul>").css("list-style-type", "disc");
+            var pubList = $("<ul>").css("list-style-type", "disc").css("list-style-position", "inside").css("margin-left", "10px");
             var publisher = $("<li>").html("<span class='has-text-weight-bold'>Publisher: </span>" + biography.publisher);
             var firstSeen = $("<li>").html("<span class='has-text-weight-bold'>First Appearance: </span>" + biography["first-appearance"]);
             var teams = connections['group-affiliation'].split(', ');
@@ -103,7 +103,8 @@ function displayHeroInfo() {
         }).then(function(response) {
             console.log(response);
             console.log('yo');
-            var imageUrl = response.data[0].images.original.url;
+            for (i=0; i < 3; i++){
+            var imageUrl = response.data[i].images.original.url;
 
           // Creating and storing an image tag
             var heroImage = $("<img>");
@@ -113,7 +114,11 @@ function displayHeroInfo() {
             heroImage.attr("alt", "hero image");
 
             // Prepending the catImage to the images div
+            $("#gif-div"+i).empty().append(heroImage);
             $("#gif-div").empty().append(heroImage);
+            $("#gif-div").empty().append(heroImage);
+            }
+
         });   
 };
 

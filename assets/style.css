@@ -1,13 +1,8 @@
-/* body {
-    background-color:rgb(79, 97, 114);
-    font-family: "Amatic SC", cursive;
-} */
-/* .tile.is-child {
-    background-color: rgb(170, 175, 180);
+body{
+    color: black;
+    background-color:#b6ac77cb;
+    padding-bottom: 20px;
 }
-#chart-div {
-    background-color: rgb(170, 175, 180);
-} */
 #bio-div {
     word-break: break-word;
 }
@@ -23,11 +18,11 @@
 ul {
     font-family: "Walter Turncoat", cursive;
     font-size: 20;
+    list-style-position: inside;
 }
 
-canvas {
-    width: 100%;
-    height: 100%;
+#main-info .subtitle {
+    text-align: center;
 }
 
 .title, .subtitle {
@@ -36,12 +31,32 @@ canvas {
     font-weight: bolder;
 }
 
-/* 
-.box {
-    margin:0;
-    border: 10px solid black;
-    padding: 0;
+.subtitle {
+    color: black;
 }
+
+.tile.is-vertical>.tile.is-child:not(:last-child) {
+    margin-bottom: .3rem!important;
+}
+.tile.is-child {
+    padding:.3rem;
+    margin:.3rem;
+}
+.tile.is-parent {
+    padding: .3rem;
+}
+
+.box {
+    color:black;
+    background-color: rgb(255, 171, 102);
+    border: 5px solid black;
+    padding: 0 !important;
+}
+
+.gifbox {
+    background-color: black;
+}
+/* 
 .column {
     padding: 0;
     margin: 0;
