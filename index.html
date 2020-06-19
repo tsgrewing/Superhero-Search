@@ -36,7 +36,7 @@
                 <div class="tile is-6 is-vertical is-parent">
                     <article class="tile is-child box">
                         <p class="subtitle" id="hero-name"></p>
-                        <figure class="image is-4by3" id="hero-pic">
+                        <figure class="image " id="hero-pic">
                         </figure>
                       </article>
                   <div class="tile is-child box">
@@ -55,28 +55,22 @@
 
         
         <!-- Chart div to hold the stat chart and the key to the chart -->
-        <div class="column is-one-quarter box" id="chart-div">
+        <div class="column is-one-quarter box" id="gif-container">
 
-            <canvas id="myChart"></canvas>
-            <!-- uncomment canvas when the chart scripts and css is ready -->
-            <!-- <canvas id="canvas-content"> </canvas> -->
+            <figure class="image" id="gif-div">
 
-            <!-- placeholder image of chart -->
-            <!-- <img src="development\placeholder chart.png"> -->
-
+            </figure>
         </div>
 
         <!-- gif container to hold gifs/gif carousel -->
-        <div class="column" id="gif-container">
+        <div class="column" id="chart-div">
             <div class="tile is-ancestor">
                 <div class="tile is-parent is-vertical">
             <!-- placeholder gif -->
 
                     <div class="tile is-child box">
-
-                        <figure class="image is-16by9" id="gif-div">
-
-                          </figure>
+                        <canvas id="myChart"></canvas>
+                        
                     </div>
                 </div>
             </div>

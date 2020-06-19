@@ -22,14 +22,19 @@ function displayHeroInfo() {
             var bioDiv = $("#bio-div");
             var biography = response.results[0].biography;
             var appearance = response.results[0].appearance;
+            var connections = response.results[0].connections;
             // console.log(biography['full-name']);
             var bioList = $("<ul>").css("list-style-type", "disc");
             var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
-            var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography["aliases"].join(', '));
+            var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography.aliases.join(', '));
             var birthplace = $("<li>").html("<span class='has-text-weight-bold'>Birhtplace: </span>" + biography["place-of-birth"]);
-            var height = $("<li>").html("<span class='has-text-weight-bold'>Height: </span>" + appearance["height"].join('/'));
-            var weight = $("<li>").html("<span class='has-text-weight-bold'>Weight: </span>" + appearance["weight"].join('/'));
-            bioList.append(fullName).append(aliases).append(birthplace).append(height).append(weight);
+            var height = $("<li>").html("<span class='has-text-weight-bold'>Height: </span>" + appearance.height.join('/'));
+            var weight = $("<li>").html("<span class='has-text-weight-bold'>Weight: </span>" + appearance.weight.join('/'));
+            var eyes = $("<li>").html("<span class='has-text-weight-bold'>Eye Color: </span>" + appearance["eye-color"]);
+            var hair = $("<li>").html("<span class='has-text-weight-bold'>Hair Color: </span>" + appearance["hair-color"]);
+            var race = $("<li>").html("<span class='has-text-weight-bold'>Race: </span>" + appearance.race);
+            var family = $("<li>").html("<span class='has-text-weight-bold'>Relatives: </span>" + connections.relatives);
+            bioList.append(fullName).append(aliases).append(birthplace).append(race).append(height).append(weight).append(eyes).append(hair).append(family);
             bioDiv.empty().append(bioList);
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
@@ -87,7 +92,7 @@ function displayHeroInfo() {
             heroImage.attr("alt", "hero image");
 
             // Prepending the catImage to the images div
-            $("#gif-div").append(heroImage);
+            $("#gif-div").empty().append(heroImage);
         });   
 };
 
