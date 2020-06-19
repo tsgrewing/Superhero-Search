@@ -14,10 +14,10 @@ function displayHeroInfo() {
         }).then(function(response) {
             console.log(response);
             // this section will populate the powers-div with the hero's powerstats
-            var chartDiv = $("#chart-div");
-            var powerStats = JSON.stringify(response.results[0].powerstats);
-            var powerPtag = $("<p>").text(powerStats);
-            chartDiv.empty().append(powerPtag);
+            // var chartDiv = $("#chart-div");
+            // var powerStats = JSON.stringify(response.results[0].powerstats);
+            // var powerPtag = $("<p>").text(powerStats);
+            // chartDiv.append(powerPtag);
             // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
             var biography = JSON.stringify(response.results[0].biography);
@@ -33,6 +33,33 @@ function displayHeroInfo() {
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
             heroPtag.text(capitalizeFirstLetter(hero));
+        
+            var intel = response.results[0].powerstats.intelligence
+            var strength = response.results[0].powerstats.strength
+            var speedd = response.results[0].powerstats.speed
+            var dura = response.results[0].powerstats.durability
+            var powerr = response.results[0].powerstats.power
+            var combatt = response.results[0].powerstats.combat
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'radar',
+            
+                // The data for our dataset
+                data: {
+                    labels: ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat', ],
+                    datasets: [{
+                        label: 'Attributes',
+                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [intel, strength, speedd, dura, powerr, combatt,]
+                    }]
+                },
+            
+                // Configuration options go here
+                options: {}
+            });
         });
     //giphy API call
     $.ajax({
@@ -51,8 +78,8 @@ function displayHeroInfo() {
             heroImage.attr("alt", "hero image");
 
             // Prepending the catImage to the images div
-            $("#gif-div").empty().append(heroImage);
-        });
-}
+            $("#gif-div").append(heroImage);
+        });   
+};
 
 $("#submit-btn").on("click", displayHeroInfo);
