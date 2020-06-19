@@ -13,18 +13,19 @@ function displayHeroInfo() {
             var chartDiv = $("#chart-div");
             var powerStats = JSON.stringify(response.results[0].powerstats);
             var powerPtag = $("<p>").text(powerStats);
-            chartDiv.append(powerPtag);
+            chartDiv.empty().append(powerPtag);
             // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
             var biography = JSON.stringify(response.results[0].biography);
             var bioPtag = $("<p>").text(biography);
-            bioDiv.append(bioPtag);
+            bioDiv.empty().append(bioPtag);
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
             var heroPic = response.results[0].image.url;
             var heroImgTag = $("<img>");
             heroImgTag.attr("src", heroPic);
             heroImgTag.attr("alt", "hero image");
+
             heroArticle.append(heroImgTag);
 
         
@@ -54,6 +55,9 @@ function displayHeroInfo() {
             // Configuration options go here
             options: {}
         });
+
+            heroArticle.empty().append(heroImgTag);
+
         });
     //giphy API call
     $.ajax({
