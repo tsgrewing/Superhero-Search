@@ -35,7 +35,7 @@ function displayHeroInfo() {
             var family = $("<li>").html("<span class='has-text-weight-bold'>Relatives: </span>" + connections.relatives);
             bioList.append(fullName).append(aliases).append(birthplace).append(race).append(height).append(weight).append(eyes).append(hair).append(family);
             bioDiv.empty().append(bioList);
-            $("#bio-title").text("Bio: ");
+            $("#bio-title").addClass("is-size-4").text("Bio: ");
 
             // Populate the Publication Div
             var pubDiv = $("#pub-div");
@@ -55,7 +55,7 @@ function displayHeroInfo() {
             }
             pubList.append(publisher).append(firstSeen).append(teams);
             pubDiv.empty().append(pubList);
-            $("#pub-title").text("Publication: ")
+            $("#pub-title").addClass("is-size-4").text("Publication: ")
 
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
@@ -66,7 +66,7 @@ function displayHeroInfo() {
             heroArticle.empty().append(heroImgTag);
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
-            heroPtag.text(capitalizeFirstLetter(hero));
+            heroPtag.addClass("is-size-4").text(capitalizeFirstLetter(hero));
         
             var intel = response.results[0].powerstats.intelligence
             var strength = response.results[0].powerstats.strength
