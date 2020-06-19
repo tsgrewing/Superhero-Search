@@ -23,7 +23,6 @@ function displayHeroInfo() {
             var biography = response.results[0].biography;
             var appearance = response.results[0].appearance;
             var connections = response.results[0].connections;
-            // console.log(biography['full-name']);
             var bioList = $("<ul>").css("list-style-type", "disc");
             var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
             var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography.aliases.join(', '));
@@ -36,6 +35,28 @@ function displayHeroInfo() {
             var family = $("<li>").html("<span class='has-text-weight-bold'>Relatives: </span>" + connections.relatives);
             bioList.append(fullName).append(aliases).append(birthplace).append(race).append(height).append(weight).append(eyes).append(hair).append(family);
             bioDiv.empty().append(bioList);
+            $("#bio-title").text("Bio: ");
+
+            // Populate the Publication Div
+            var pubDiv = $("#pub-div");
+            var pubList = $("<ul>").css("list-style-type", "disc");
+            var publisher = $("<li>").html("<span class='has-text-weight-bold'>Publisher: </span>" + biography.publisher);
+            var firstSeen = $("<li>").html("<span class='has-text-weight-bold'>First Appearance: </span>" + biography["first-appearance"]);
+            var teams = connections['group-affiliation'].split(', ');
+            console.log(teams)
+            if (teams.length > 3) {
+                teams = $("<li>").html("<span class='has-text-weight-bold'>Notable Affiliation(s): </span>" + teams.slice(0, 3).join(', '));
+            }
+            else if (teams == '-') {
+                teams = $("<li>").html("<span class='has-text-weight-bold'>Notable Affiliation(s): </span>None");
+            }
+            else {
+                teams = $("<li>").html("<span class='has-text-weight-bold'>Notable Affiliation(s): </span>" + teams.join(', '));
+            }
+            pubList.append(publisher).append(firstSeen).append(teams);
+            pubDiv.empty().append(pubList);
+            $("#pub-title").text("Publication: ")
+
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
             var heroPic = response.results[0].image.url;
