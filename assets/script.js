@@ -60,6 +60,7 @@ function displayHeroInfo() {
                 // Configuration options go here
                 options: {}
             });
+
         });
     //giphy API call
     $.ajax({
