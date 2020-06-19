@@ -1,3 +1,7 @@
+//Function to capitalise first character for strings
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 function displayHeroInfo() {
     var hero = $("#search-input").val(); 
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
@@ -26,33 +30,37 @@ function displayHeroInfo() {
             heroImgTag.attr("src", heroPic);
             heroImgTag.attr("alt", "hero image");
             heroArticle.empty().append(heroImgTag);
+            // this section will change the hero's name on the page
+            var heroPtag = $("#hero-name");
+            heroPtag.text(capitalizeFirstLetter(hero));
         
-        var intel = response.results[0].powerstats.intelligence
-        var strength = response.results[0].powerstats.strength
-        var speedd = response.results[0].powerstats.speed
-        var dura = response.results[0].powerstats.durability
-        var powerr = response.results[0].powerstats.power
-        var combatt = response.results[0].powerstats.combat
+            var intel = response.results[0].powerstats.intelligence
+            var strength = response.results[0].powerstats.strength
+            var speedd = response.results[0].powerstats.speed
+            var dura = response.results[0].powerstats.durability
+            var powerr = response.results[0].powerstats.power
+            var combatt = response.results[0].powerstats.combat
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var chart = new Chart(ctx, {
-            // The type of chart we want to create
-            type: 'radar',
-        
-            // The data for our dataset
-            data: {
-                labels: ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat', ],
-                datasets: [{
-                    label: 'Attributes',
-                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [intel, strength, speedd, dura, powerr, combatt,]
-                }]
-            },
-        
-            // Configuration options go here
-            options: {}
-        });
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'radar',
+            
+                // The data for our dataset
+                data: {
+                    labels: ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat', ],
+                    datasets: [{
+                        label: 'Attributes',
+                        backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [intel, strength, speedd, dura, powerr, combatt,]
+                    }]
+                },
+            
+                // Configuration options go here
+                options: {}
+            });
+
         });
     //giphy API call
     $.ajax({
