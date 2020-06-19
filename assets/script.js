@@ -27,6 +27,18 @@
         method: "GET"
         }).then(function(response) {
             console.log(response);
+            console.log('yo');
+            var imageUrl = response.data[0].images.original.url;
+
+          // Creating and storing an image tag
+            var heroImage = $("<img>");
+
+            // Setting the catImage src attribute to imageUrl
+            heroImage.attr("src", imageUrl);
+            heroImage.attr("alt", "hero image");
+
+            // Prepending the catImage to the images div
+            $("#gif-div").append(heroImage);
         });
 
 // }
@@ -36,23 +48,4 @@ $("#submit-btn").on("click", function() {
 });
 
 //requires jQuery
-var hero = "superman"
-var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
-var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
-
-$.ajax({
-    url: queryURLOne,
-    method: "GET"
-    }).then(function(response) {
-        console.log(response);
-        console.log("test1");
-      });
-
-$.ajax({
-    url: queryURLTwo,
-    method: "GET"
-    }).then(function(response) {
-        console.log(response);
-        console.log("test2");
-      });
 
