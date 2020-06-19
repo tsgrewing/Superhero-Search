@@ -10,10 +10,10 @@ function displayHeroInfo() {
         }).then(function(response) {
             console.log(response);
             // this section will populate the powers-div with the hero's powerstats
-            var chartDiv = $("#chart-div");
-            var powerStats = JSON.stringify(response.results[0].powerstats);
-            var powerPtag = $("<p>").text(powerStats);
-            chartDiv.empty().append(powerPtag);
+            // var chartDiv = $("#chart-div");
+            // var powerStats = JSON.stringify(response.results[0].powerstats);
+            // var powerPtag = $("<p>").text(powerStats);
+            // chartDiv.append(powerPtag);
             // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
             var biography = JSON.stringify(response.results[0].biography);
@@ -25,9 +25,7 @@ function displayHeroInfo() {
             var heroImgTag = $("<img>");
             heroImgTag.attr("src", heroPic);
             heroImgTag.attr("alt", "hero image");
-
-            heroArticle.append(heroImgTag);
-
+            heroArticle.empty().append(heroImgTag);
         
         var intel = response.results[0].powerstats.intelligence
         var strength = response.results[0].powerstats.strength
@@ -55,9 +53,6 @@ function displayHeroInfo() {
             // Configuration options go here
             options: {}
         });
-
-            heroArticle.empty().append(heroImgTag);
-
         });
     //giphy API call
     $.ajax({
@@ -77,11 +72,7 @@ function displayHeroInfo() {
 
             // Prepending the catImage to the images div
             $("#gif-div").append(heroImage);
-        });
-
-
-
-      
+        });   
 };
 
 $("#submit-btn").on("click", displayHeroInfo);
