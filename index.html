@@ -11,19 +11,21 @@
 </head>
 <body>
     <!-- navbar and app title -->
-    <nav class="navbar is-dark has-padding-1" id="header" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <h1 class="title is-2 has-text-warning">Super Hero Search</h1>
-        </div>
+    <nav class="container" id="header">
+            <h1>Super Hero Search</h1>
     </nav>
 
     <!-- search bar -->
     <div class="container level is-light" id="search-bar">
-        <h3 class="subtitle is-3">Search for your favorite super hero or find a random one</h3>
+        <div class="column">
+        <h3 class="subtitle is-3">Search for your favorite super hero!</h3>
+        </div>
+        <div class="column">
         <form class="field is-grouped" id="search-form">
-            <button type="button" class="button is-primary is-rounded" id="submit-btn">Search</button> 
-            <input class="input is-rounded" id="search-input" type="text" placeholder="Search">
+            <button type="button" class="button" id="submit-btn">Search</button> 
+            <input class="input  is-expanded is-fullwidth" id="search-input" type="text" placeholder="Search">
         </form>
+        </div>
     </div>
 
     <!-- container for bio, chart and gif containers -->

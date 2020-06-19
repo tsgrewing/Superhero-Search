@@ -1,6 +1,61 @@
 html {
     background-color:#b6ac7785;
+    background-image: url('images/old paper wide.png');
+    background-blend-mode: exclusion;
+}
 
+#header {
+    padding: 25px;
+    text-shadow: 5px 5px #c24f4f;
+    text-align: center;
+    margin-bottom: 0;
+    /* background-color: rgb(194, 79, 79); */
+}
+h1 {
+    font-family: "Bangers", cursive;
+    font-size: 10rem;
+    color: #d1be16;
+    text-shadow: -10px 8px #c24f4f;
+    line-height: 1;
+    -ms-transform: skewY(-5deg); /* IE 9 */
+    transform: skewY(-5deg);
+    margin-top: .75rem;
+    -webkit-text-stroke: 5px #000000;
+    /* mix-blend-mode: color-burn; */
+}
+
+#search-bar {
+    background-image: url("images/old paper wide.png");
+    background-position: center;
+    background-size:cover;
+    background-blend-mode: darken;
+    background-color: #ffff0088;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 5px solid black;
+    text-align: center;
+}
+#submit-btn {
+    background-image: url("images/old paper wide.png");
+    background-position: center;
+    background-blend-mode: luminosity;
+    background-color: #99B927;
+    font-family: "Bangers", cursive;
+    font-size:larger;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+input[type="text"], textarea {
+    background-image: url("images/old paper.png");
+    background-position: center;
+    background-blend-mode: luminosity;
+    background-color : #000000; 
+    font-family: "Walter Turncoat", cursive;
+    font-size:larger;
+    font-weight: 900;
+    border: 1px solid black;
 }
 
 body{
@@ -51,7 +106,7 @@ ul {
 }
 
 .box {
-    background-image: url("old paper.png");
+    background-image: url("images/old paper.png");
     background-position: center;
     background-blend-mode: luminosity;
     color:black;
@@ -66,7 +121,7 @@ ul {
     background-blend-mode: darken;
 }
 #hero-name {
-    background-image: url("old paper.png");
+    background-image: url("images/old paper.png");
     background-position: center;
     background-blend-mode: darken;
     margin-bottom: .25rem;
@@ -77,7 +132,7 @@ ul {
 }
 
 #bio-title {
-    background-image: url("old paper.png");
+    background-image: url("images/old paper.png");
     background-position: center;
     background-blend-mode: darken;
     background-color: #ffff0088;
@@ -90,7 +145,7 @@ ul {
 }
 
 #pub-title {
-    background-image: url("old paper.png");
+    background-image: url("images/old paper.png");
     background-position: center;
     background-blend-mode: darken;
     margin-bottom: .25rem;
@@ -113,5 +168,5 @@ ul {
 }
 
 #chart-box {
-    background-color: #fcef3ea6;
+    background-color: #000000;
 }
