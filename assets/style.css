@@ -9,7 +9,7 @@
     background-color: rgb(170, 175, 180);
 } */
 #bio-div {
-    word-break: break-all;
+    word-break: break-word;
 }
 #chart-div {
     word-break: break-all;

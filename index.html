@@ -22,7 +22,6 @@
     <div class="container level is-light" id="search-bar">
         <h3 class="subtitle is-3">Search for your favorite super hero or find a random one</h3>
         <form class="field is-grouped" id="search-form">
-            <button type="button" class="button is-primary is-rounded" id="random-btn">Random</button>
             <button type="button" class="button is-primary is-rounded" id="submit-btn">Search</button> 
             <input class="input is-rounded" id="search-input" type="text" placeholder="Search">
         </form>
@@ -41,13 +40,13 @@
                         </figure>
                       </article>
                   <div class="tile is-child box">
-                    <p class="subtitle">Publication:</p>
+                    <p class="subtitle" id="pub-title"></p>
                     <div id="pub-div"></div>
                   </div>
                 </div>
                 <div class="tile is-parent">
                   <div class="tile is-child box">
-                    <p class="subtitle">Bio</p>
+                    <p class="subtitle" id="bio-title"></p>
                     <div id="bio-div"></div>
                   </div>
                 </div>

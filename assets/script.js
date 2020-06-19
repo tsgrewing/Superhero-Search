@@ -20,9 +20,17 @@ function displayHeroInfo() {
             // chartDiv.append(powerPtag);
             // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
-            var biography = JSON.stringify(response.results[0].biography);
-            var bioPtag = $("<p>").text(biography);
-            bioDiv.empty().append(bioPtag);
+            var biography = response.results[0].biography;
+            var appearance = response.results[0].appearance;
+            // console.log(biography['full-name']);
+            var bioList = $("<ul>").css("list-style-type", "disc");
+            var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
+            var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography["aliases"].join(', '));
+            var birthplace = $("<li>").html("<span class='has-text-weight-bold'>Birhtplace: </span>" + biography["place-of-birth"]);
+            var height = $("<li>").html("<span class='has-text-weight-bold'>Height: </span>" + appearance["height"].join('/'));
+            var weight = $("<li>").html("<span class='has-text-weight-bold'>Weight: </span>" + appearance["weight"].join('/'));
+            bioList.append(fullName).append(aliases).append(birthplace).append(height).append(weight);
+            bioDiv.empty().append(bioList);
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
             var heroPic = response.results[0].image.url;
