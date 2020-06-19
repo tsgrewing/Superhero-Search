@@ -2,6 +2,7 @@ html {
     background-color:#b6ac7785;
     background-image: url('images/old paper wide.png');
     background-blend-mode: exclusion;
+    background-size: cover;
 }
 
 #header {
