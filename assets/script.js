@@ -33,7 +33,20 @@ function displayHeroInfo() {
         method: "GET"
         }).then(function(response) {
             console.log(response);
+            console.log('yo');
+            var imageUrl = response.data[0].images.original.url;
+
+          // Creating and storing an image tag
+            var heroImage = $("<img>");
+
+            // Setting the catImage src attribute to imageUrl
+            heroImage.attr("src", imageUrl);
+            heroImage.attr("alt", "hero image");
+
+            // Prepending the catImage to the images div
+            $("#gif-div").append(heroImage);
         });
+
 
 };
 
