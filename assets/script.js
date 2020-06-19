@@ -1,9 +1,9 @@
-
-// function displayHeroInfo() {   
-    var hero = "deadpool"; 
+function displayHeroInfo() {
+    var hero = $("#search-input").val(); 
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
     //superhero API call
+    console.log(hero);
     $.ajax({
         url: queryURLOne,
         method: "GET"
@@ -19,7 +19,13 @@
             var biography = JSON.stringify(response.results[0].biography);
             var bioPtag = $("<p>").text(biography);
             bioDiv.append(bioPtag);
-
+            // this section will populate the hero-pic 
+            var heroArticle = $("#hero-pic");
+            var heroPic = response.results[0].image.url;
+            var heroImgTag = $("<img>");
+            heroImgTag.attr("src", heroPic);
+            heroImgTag.attr("alt", "hero image");
+            heroArticle.append(heroImgTag);
         });
     //giphy API call
     $.ajax({
@@ -41,11 +47,7 @@
             $("#gif-div").append(heroImage);
         });
 
-// }
 
-$("#submit-btn").on("click", function() {
-    console.log("search clicked")
-});
+};
 
-//requires jQuery
-
+$("#submit-btn").on("click", displayHeroInfo);
