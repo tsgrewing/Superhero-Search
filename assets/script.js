@@ -25,7 +25,39 @@ function displayHeroInfo() {
             var heroImgTag = $("<img>");
             heroImgTag.attr("src", heroPic);
             heroImgTag.attr("alt", "hero image");
+
+            heroArticle.append(heroImgTag);
+
+        
+        var intel = response.results[0].powerstats.intelligence
+        var strength = response.results[0].powerstats.strength
+        var speedd = response.results[0].powerstats.speed
+        var dura = response.results[0].powerstats.durability
+        var powerr = response.results[0].powerstats.power
+        var combatt = response.results[0].powerstats.combat
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'radar',
+        
+            // The data for our dataset
+            data: {
+                labels: ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat', ],
+                datasets: [{
+                    label: 'Attributes',
+                    backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [intel, strength, speedd, dura, powerr, combatt,]
+                }]
+            },
+        
+            // Configuration options go here
+            options: {}
+        });
+
             heroArticle.empty().append(heroImgTag);
+
         });
     //giphy API call
     $.ajax({
@@ -48,6 +80,8 @@ function displayHeroInfo() {
         });
 
 
+
+      
 };
 
 $("#submit-btn").on("click", displayHeroInfo);
