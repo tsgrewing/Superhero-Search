@@ -9,3 +9,4 @@ As a comic book nerd, I want to be able to find information, pictures and stats 
 
 ## Development
 APIs to be used: superheroAPI, GIPHY, and Chart.js.
+Thanks to ftourini on DeviantArt for the old stock paper image used to the backgrounds. [ftourni on DeviantArt](https://www.deviantart.com/ftourini/art/old-paper-stock-02-256716612)
