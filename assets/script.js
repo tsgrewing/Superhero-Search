@@ -6,8 +6,11 @@ function displayHeroInfo() {
     var hero = $("#search-input").val(); 
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
-    //superhero API call
-    console.log(hero);
+
+    // Set Background of info divs
+    var backgroundColors = [];
+
+
     $.ajax({
         url: queryURLOne,
         method: "GET"
@@ -23,7 +26,7 @@ function displayHeroInfo() {
             var biography = response.results[0].biography;
             var appearance = response.results[0].appearance;
             var connections = response.results[0].connections;
-            var bioList = $("<ul>").css("list-style-type", "disc");
+            var bioList = $("<ul>").css("list-style-type", "disc").css("list-style-position", "inside").css("margin-left", "10px");
             var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
             var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography.aliases.join(', '));
             var birthplace = $("<li>").html("<span class='has-text-weight-bold'>Birhtplace: </span>" + biography["place-of-birth"]);
@@ -35,11 +38,11 @@ function displayHeroInfo() {
             var family = $("<li>").html("<span class='has-text-weight-bold'>Relatives: </span>" + connections.relatives);
             bioList.append(fullName).append(aliases).append(birthplace).append(race).append(height).append(weight).append(eyes).append(hair).append(family);
             bioDiv.empty().append(bioList);
-            $("#bio-title").text("Bio: ");
+            $("#bio-title").addClass("is-size-4").text("Bio: ");
 
             // Populate the Publication Div
             var pubDiv = $("#pub-div");
-            var pubList = $("<ul>").css("list-style-type", "disc");
+            var pubList = $("<ul>").css("list-style-type", "disc").css("list-style-position", "inside").css("margin-left", "10px");
             var publisher = $("<li>").html("<span class='has-text-weight-bold'>Publisher: </span>" + biography.publisher);
             var firstSeen = $("<li>").html("<span class='has-text-weight-bold'>First Appearance: </span>" + biography["first-appearance"]);
             var teams = connections['group-affiliation'].split(', ');
@@ -55,7 +58,7 @@ function displayHeroInfo() {
             }
             pubList.append(publisher).append(firstSeen).append(teams);
             pubDiv.empty().append(pubList);
-            $("#pub-title").text("Publication: ")
+            $("#pub-title").addClass("is-size-4").text("Publication: ")
 
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
@@ -66,7 +69,7 @@ function displayHeroInfo() {
             heroArticle.empty().append(heroImgTag);
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
-            heroPtag.text(capitalizeFirstLetter(hero));
+            heroPtag.addClass("is-size-4").text(capitalizeFirstLetter(hero));
         
             var intel = response.results[0].powerstats.intelligence
             var strength = response.results[0].powerstats.strength
@@ -92,7 +95,17 @@ function displayHeroInfo() {
                 },
             
                 // Configuration options go here
-                options: {}
+                options: {
+                    scale: {
+                        gridLines: {
+                            color: 'black'
+                        },
+                        angleLines: {
+                            color: 'black'
+                        }
+                    }
+                    
+                }
             });
 
         });
@@ -103,7 +116,8 @@ function displayHeroInfo() {
         }).then(function(response) {
             console.log(response);
             console.log('yo');
-            var imageUrl = response.data[0].images.original.url;
+            for (i=0; i < 3; i++){
+            var imageUrl = response.data[i].images.original.url;
 
           // Creating and storing an image tag
             var heroImage = $("<img>");
@@ -113,7 +127,11 @@ function displayHeroInfo() {
             heroImage.attr("alt", "hero image");
 
             // Prepending the catImage to the images div
+            $("#gif-div"+i).empty().append(heroImage);
             $("#gif-div").empty().append(heroImage);
+            $("#gif-div").empty().append(heroImage);
+            }
+
         });   
 };
 

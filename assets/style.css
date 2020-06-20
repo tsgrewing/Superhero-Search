@@ -1,13 +1,68 @@
-/* body {
-    background-color:rgb(79, 97, 114);
-    
+html {
+    background-color:#b6ac7785;
+    background-image: url('images/old paper wide.png');
+    background-blend-mode: exclusion;
+    background-size: cover;
 }
-.tile.is-child {
-    background-color: rgb(170, 175, 180);
+
+#header {
+    padding: 25px;
+    text-shadow: 5px 5px #c24f4f;
+    text-align: center;
+    margin-bottom: 0;
+    /* background-color: rgb(194, 79, 79); */
 }
-#chart-div {
-    background-color: rgb(170, 175, 180);
-} */
+h1 {
+    font-family: "Bangers", cursive;
+    font-size: 10rem;
+    color: #d1be16;
+    text-shadow: -10px 8px #c24f4f;
+    line-height: 1;
+    -ms-transform: skewY(-5deg); /* IE 9 */
+    transform: skewY(-5deg);
+    margin-top: .75rem;
+    -webkit-text-stroke: 5px #000000;
+    /* mix-blend-mode: color-burn; */
+}
+
+#search-bar {
+    background-image: url("images/old paper wide.png");
+    background-position: center;
+    background-size:cover;
+    background-blend-mode: darken;
+    background-color: #ffff0088;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 5px solid black;
+    text-align: center;
+}
+#submit-btn {
+    background-image: url("images/old paper wide.png");
+    background-position: center;
+    background-blend-mode: luminosity;
+    background-color: #99B927;
+    font-family: "Bangers", cursive;
+    font-size:larger;
+    margin-right: 10px;
+    border: 1px solid black;
+}
+input[type="text"], textarea {
+    background-image: url("images/old paper.png");
+    background-position: center;
+    background-blend-mode: luminosity;
+    background-color : #000000; 
+    font-family: "Walter Turncoat", cursive;
+    font-size:larger;
+    font-weight: 900;
+    border: 1px solid black;
+}
+
+body{
+    color: black;
+    padding-bottom: 20px;
+}
 #bio-div {
     word-break: break-word;
 }
@@ -20,23 +75,99 @@
     /* display: flex; */
 }
 
-canvas {
-    width: 100%;
-    height: 100%;
+ul {
+    font-family: "Walter Turncoat", cursive;
+    font-size: 20;
+    list-style-position: inside;
 }
 
-/* 
+#main-info .subtitle {
+    text-align: center;
+}
+
+.title, .subtitle {
+    font-family: "Bangers", cursive;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.subtitle {
+    color: black;
+}
+
+.tile.is-vertical>.tile.is-child:not(:last-child) {
+    margin-bottom: .3rem!important;
+}
+.tile.is-child {
+    padding:.3rem;
+    margin:.3rem;
+}
+.tile.is-parent {
+    padding: .3rem;
+}
+
 .box {
-    margin:0;
-    border: 10px solid black;
-    padding: 0;
+    background-image: url("images/old paper.png");
+    background-position: center;
+    background-blend-mode: luminosity;
+    color:black;
+    /* background-color: #02e1ff93; */
+    border: 5px solid black;
+    padding: 0 !important;
+    border-radius: 0px;
 }
-.column {
-    padding: 0;
-    margin: 0;
+
+.gifbox {
+    background-color: #000000;
+    background-blend-mode: darken;
 }
-.tile {
-    margin: 0;
-    border: 10px solid black;
-    padding:0;
-} */
+#hero-name {
+    background-image: url("images/old paper.png");
+    background-position: center;
+    background-blend-mode: darken;
+    margin-bottom: .25rem;
+    background-color: #ffff0088;
+    margin-right: 5rem;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+
+#bio-title {
+    background-image: url("images/old paper.png");
+    background-position: center;
+    background-blend-mode: darken;
+    background-color: #ffff0088;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    margin-bottom: .25rem;
+}
+
+#pub-title {
+    background-image: url("images/old paper.png");
+    background-position: center;
+    background-blend-mode: darken;
+    margin-bottom: .25rem;
+    background-color: #ffff0088;
+    margin-left: 5rem;
+    border-bottom: 5px solid black;
+    border-left: 5px solid black;
+}
+
+#bio-box {
+    background-color: #02e1ff93;
+}
+
+#pub-box {
+    background-color: #02ff1793;
+}
+
+#pic-box {
+    background-color: #ff9a0293;
+}
+
+#chart-box {
+    background-color: #000000;
+}
