@@ -79,6 +79,10 @@ function displayHeroInfo() {
             var combatt = response.results[0].powerstats.combat
 
             var ctx = document.getElementById('myChart').getContext('2d');
+            Chart.defaults.global.defaultFontColor = 'black';
+            Chart.defaults.global.defaultFontSize = 12;
+            Chart.defaults.global.defaultFontStyle = 'bold';
+            Chart.defaults.global.defaultFontFamily = "Walter Turncoat";
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'radar',
@@ -90,12 +94,14 @@ function displayHeroInfo() {
                         label: 'Attributes',
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
                         borderColor: 'rgb(255, 99, 132)',
-                        data: [intel, strength, speedd, dura, powerr, combatt,]
+                        data: [intel, strength, speedd, dura, powerr, combatt,],
+                        
                     }]
                 },
             
                 // Configuration options go here
                 options: {
+                    maintainAspectRatio: false,
                     scale: {
                         gridLines: {
                             color: 'black'
