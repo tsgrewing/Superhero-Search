@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>    
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Walter+Turncoat&display=swap" rel="stylesheet">
     <title>Super Hero Search</title>
 
@@ -18,7 +19,7 @@
     <!-- search bar -->
     <div class="container level is-light" id="search-bar">
         <div class="column">
-        <h3 class="subtitle is-3">Search for your favorite super hero!</h3>
+        <p class="subtitle is-3">Search for your favorite super hero!</p>
         </div>
         <div class="column">
         <form class="field is-grouped" id="search-form">
@@ -57,10 +58,10 @@
         
             <!-- Chart div to hold the stat chart and the key to the chart -->
             <div class="tile is-vertical is-parent is-3" id="gif-container">
-                <div class="tile is-child box gifbox">
-                    <figure class="image" id="gif-div0">
-                    </figure>
+                <div class="tile is-child box" id="chart-box" >
+                    <canvas id="myChart"></canvas>
                 </div>
+
                 <div class="tile is-child box gifbox">
                     <figure class="image" id="gif-div1">
                     </figure>
@@ -70,8 +71,9 @@
             <!-- gif container to hold gifs/gif carousel -->
             <div class="tile" id="chart-div">
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child box" id="chart-box" style="position: relative; height:40vh; width:30vw">
-                        <canvas id="myChart"></canvas>
+                    <div class="tile is-child box gifbox">
+                        <figure class="image" id="gif-div0">
+                        </figure>
                     </div>
                     <div class="tile is-child box gifbox">
                         <figure class="image" id="gif-div2">
@@ -83,9 +85,16 @@
     </div>
 
     <!-- Footer -->
-    <footer class="container" id="header">
-        <h1>Super Hero Search</h1>
-    </footer>
+    <footer class="container" id="footer">
+        <div class="column">
+            <p class="subtitle is-5" id="footer-links">
+                <a href="https://github.com/alixwawa"><i class="fab fa-github"></i>Alix</a>
+                <a href="https://github.com/jblong27"><i class="fab fa-github"></i>Jordan</a>
+                <a href="https://github.com/tsgrewing/Superhero-Search"><i class="fab fa-github"></i>Tony</a>
+            </p>
+            <p class="subtitle is-6" id="footer-text"><i class="far fa-copyright"></i>Tony Grewing, Jordan Long, Alix Wawa 2020</p>
+        </div>
+    </footer
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
