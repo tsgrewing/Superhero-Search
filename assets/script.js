@@ -1,3 +1,5 @@
+let input = document.querySelector('input');
+
 //Function to capitalise first character for strings
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -142,3 +144,13 @@ function displayHeroInfo() {
 };
 
 $("#submit-btn").on("click", displayHeroInfo);
+
+
+input.addEventListener("keydown", function (event){
+        if (event.keyCode === 13) {
+        event.preventDefault();
+        displayHeroInfo();
+        
+    };
+ 
+ });
