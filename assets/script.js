@@ -1,3 +1,20 @@
+// function to pull hero names from .txt file
+$(document).ready(function() {
+    searchAutoComplete();
+});
+// this function provides a dropdown autocomplete menu on the search bar
+function searchAutoComplete() {
+    jQuery.get('assets/heros.txt', function(data) {
+        console.log(data.split("\n"));
+        var heroArray = data.split("\n");
+        $("#search-input").autocomplete({
+            source: heroArray
+        }).focus(function() {
+            $(this).autocomplete("search", "");
+        });
+     });
+};
+console.log(searchAutoComplete);
 //Function to capitalise first character for strings
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -6,10 +23,8 @@ function displayHeroInfo() {
     var hero = $("#search-input").val(); 
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
-
     // Set Background of info divs
     var backgroundColors = [];
-
 
     $.ajax({
         url: queryURLOne,
@@ -115,7 +130,6 @@ function displayHeroInfo() {
         method: "GET"
         }).then(function(response) {
             console.log(response);
-            console.log('yo');
             for (i=0; i < 3; i++){
             var imageUrl = response.data[i].images.original.url;
 
