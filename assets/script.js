@@ -104,7 +104,6 @@ function displayHeroInfo() {
                             color: 'black'
                         }
                     }
-                    
                 }
             });
 
