@@ -171,3 +171,16 @@ ul {
 #chart-box {
     background-color: #000000;
 }
+
+/* media queries to change header and some formatting on small screens */
+@media screen and (max-width: 1024px) {
+    h1 {
+        font-size: 3.5rem;
+        text-shadow: -5px 4px #c24f4f;
+        -webkit-text-stroke: 2px #000000;
+    }
+    .tile.is-ancestor {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
