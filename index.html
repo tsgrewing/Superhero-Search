@@ -57,10 +57,10 @@
         
             <!-- Chart div to hold the stat chart and the key to the chart -->
             <div class="tile is-vertical is-parent is-3" id="gif-container">
-                <div class="tile is-child box gifbox">
-                    <figure class="image" id="gif-div0">
-                    </figure>
+                <div class="tile is-child box" id="chart-box" >
+                    <canvas id="myChart"></canvas>
                 </div>
+
                 <div class="tile is-child box gifbox">
                     <figure class="image" id="gif-div1">
                     </figure>
@@ -70,8 +70,9 @@
             <!-- gif container to hold gifs/gif carousel -->
             <div class="tile" id="chart-div">
                 <div class="tile is-parent is-vertical">
-                    <div class="tile is-child box" id="chart-box" style="position: relative; height:40vh; width:30vw">
-                        <canvas id="myChart"></canvas>
+                    <div class="tile is-child box gifbox">
+                        <figure class="image" id="gif-div0">
+                        </figure>
                     </div>
                     <div class="tile is-child box gifbox">
                         <figure class="image" id="gif-div2">
@@ -84,7 +85,7 @@
 
     <!-- Footer -->
     <footer class="container" id="header">
-        <h1>Super Hero Search</h1>
+       
     </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
