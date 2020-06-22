@@ -7,7 +7,7 @@ $(document).ready(function() {
 // this function provides a dropdown autocomplete menu on the search bar
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
-        heroArray = data.toLowercase().split("\n");
+        heroArray = data.toLowerCase().split("\n");
         $("#search-input").autocomplete({
             source: heroArray
         }).focus(function() {
@@ -17,7 +17,7 @@ function searchAutoComplete() {
 };
 
 function displayHeroInfo() {
-    var hero = $("#search-input").val().toLowercase();
+    var hero = $("#search-input").val().toLowerCase();
     var heroId = (heroArray.indexOf(hero) - 1);
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/" + heroId;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
