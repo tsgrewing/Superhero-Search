@@ -7,7 +7,7 @@ $(document).ready(function() {
 // this function provides a dropdown autocomplete menu on the search bar
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
-        heroArray = data.split("\n");
+        heroArray = data.toLowercase.split("\n");
         $("#search-input").autocomplete({
             source: heroArray
         }).focus(function() {
