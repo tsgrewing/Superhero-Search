@@ -1,4 +1,5 @@
-
+let input = document.querySelector('input');
+var heroArray = [];
 // function to pull hero names from .txt file
 $(document).ready(function() {
     searchAutoComplete();
@@ -6,8 +7,7 @@ $(document).ready(function() {
 // this function provides a dropdown autocomplete menu on the search bar
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
-        console.log(data.split("\n"));
-        var heroArray = data.split("\n");
+        heroArray = data.toLowercase().split("\n");
         $("#search-input").autocomplete({
             source: heroArray
         }).focus(function() {
@@ -15,37 +15,21 @@ function searchAutoComplete() {
         });
      });
 };
-console.log(searchAutoComplete);
 
-let input = document.querySelector('input');
-
-
-//Function to capitalise first character for strings
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
 function displayHeroInfo() {
-    var hero = $("#search-input").val(); 
-    var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
+    var hero = $("#search-input").val().toLowercase();
+    var heroId = (heroArray.indexOf(hero) - 1);
+    var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/" + heroId;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
-    // Set Background of info divs
-    var backgroundColors = [];
 
     $.ajax({
         url: queryURLOne,
         method: "GET"
         }).then(function(response) {
-            console.log(response);
-            // this section will populate the powers-div with the hero's powerstats
-            // var chartDiv = $("#chart-div");
-            // var powerStats = JSON.stringify(response.results[0].powerstats);
-            // var powerPtag = $("<p>").text(powerStats);
-            // chartDiv.append(powerPtag);
-            // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
-            var biography = response.results[0].biography;
-            var appearance = response.results[0].appearance;
-            var connections = response.results[0].connections;
+            var biography = response.biography;
+            var appearance = response.appearance;
+            var connections = response.connections;
             var bioList = $("<ul>").css("list-style-type", "disc").css("list-style-position", "inside").css("margin-left", "10px");
             var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
             var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography.aliases.join(', '));
@@ -66,7 +50,6 @@ function displayHeroInfo() {
             var publisher = $("<li>").html("<span class='has-text-weight-bold'>Publisher: </span>" + biography.publisher);
             var firstSeen = $("<li>").html("<span class='has-text-weight-bold'>First Appearance: </span>" + biography["first-appearance"]);
             var teams = connections['group-affiliation'].split(', ');
-            console.log(teams)
             if (teams.length > 3) {
                 teams = $("<li>").html("<span class='has-text-weight-bold'>Notable Affiliation(s): </span>" + teams.slice(0, 3).join(', '));
             }
@@ -82,21 +65,21 @@ function displayHeroInfo() {
 
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
-            var heroPic = response.results[0].image.url;
+            var heroPic = response.image.url;
             var heroImgTag = $("<img>");
             heroImgTag.attr("src", heroPic);
             heroImgTag.attr("alt", "hero image");
             heroArticle.empty().append(heroImgTag);
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
-            heroPtag.addClass("is-size-4").text(capitalizeFirstLetter(hero));
+            heroPtag.addClass("is-size-4").text(response.name);
         
-            var intel = response.results[0].powerstats.intelligence
-            var strength = response.results[0].powerstats.strength
-            var speedd = response.results[0].powerstats.speed
-            var dura = response.results[0].powerstats.durability
-            var powerr = response.results[0].powerstats.power
-            var combatt = response.results[0].powerstats.combat
+            var intel = response.powerstats.intelligence
+            var strength = response.powerstats.strength
+            var speedd = response.powerstats.speed
+            var dura = response.powerstats.durability
+            var powerr = response.powerstats.power
+            var combatt = response.powerstats.combat
 
             var ctx = document.getElementById('myChart').getContext('2d');
             Chart.defaults.global.defaultFontColor = 'black';
