@@ -139,8 +139,6 @@ function displayHeroInfo() {
 
             // Prepending the catImage to the images div
             $("#gif-div"+i).empty().append(heroImage);
-            $("#gif-div").empty().append(heroImage);
-            $("#gif-div").empty().append(heroImage);
             }
 
         });   
