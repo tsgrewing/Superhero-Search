@@ -1,5 +1,5 @@
 let input = document.querySelector('input');
-var heroArray = ["batman", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
+var heroArray = [];
 // function to pull hero names from .txt file
 $(document).ready(function() {
     searchAutoComplete();
@@ -14,7 +14,7 @@ function searchAutoComplete() {
             $(this).autocomplete("search", "");
         });
         // populate gif and info divs with a random character on page load. Pulls from a small set of popular characters
-        var startingHeroes = ["batman", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
+        var startingHeroes = ["iron man", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
         displayHeroInfo(startingHeroes[Math.floor(Math.random() * 11)]);
      });
 };
