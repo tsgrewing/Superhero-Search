@@ -9,15 +9,17 @@ function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
         heroArray = data.toLowerCase().split("\n");
         $("#search-input").autocomplete({
-            source: heroArray
+            source: heroArray            
         }).focus(function() {
             $(this).autocomplete("search", "");
         });
+        // populate gif and info divs with a random character on page load. Pulls from a small set of popular characters
+        var startingHeroes = ["batman", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
+        displayHeroInfo(startingHeroes[Math.floor(Math.random() * 11)]);
      });
 };
 
-function displayHeroInfo() {
-    var hero = $("#search-input").val().toLowerCase();
+function displayHeroInfo(hero) {
     var heroId = (heroArray.indexOf(hero) + 1);
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/" + heroId;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
@@ -73,23 +75,23 @@ function displayHeroInfo() {
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
             heroPtag.addClass("is-size-4").text(response.name);
-        
+            // Render chart of characters attributes
             var intel = response.powerstats.intelligence
             var strength = response.powerstats.strength
             var speedd = response.powerstats.speed
             var dura = response.powerstats.durability
             var powerr = response.powerstats.power
             var combatt = response.powerstats.combat
-
+            $('#myChart').remove();
+            $('#chart-box').prepend('<canvas id="myChart"></canvas>');
             var ctx = document.getElementById('myChart').getContext('2d');
             Chart.defaults.global.defaultFontColor = 'black';
-            Chart.defaults.global.defaultFontSize = 12;
+            Chart.defaults.global.defaultFontSize = 16;
             Chart.defaults.global.defaultFontStyle = 'bold';
             Chart.defaults.global.defaultFontFamily = "Walter Turncoat";
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'radar',
-            
                 // The data for our dataset
                 data: {
                     labels: ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat', ],
@@ -98,12 +100,19 @@ function displayHeroInfo() {
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: [intel, strength, speedd, dura, powerr, combatt,],
-                        
                     }]
                 },
-            
                 // Configuration options go here
                 options: {
+                    title: {
+                            display: true,
+                            text: 'Power Stats',
+                            fontFamily: "Bangers, cursive",
+                            fontSize: 32,
+                        },
+                        legend : {
+                            display: false,
+                        },
                     maintainAspectRatio: false,
                     scale: {
                         gridLines: {
@@ -111,45 +120,33 @@ function displayHeroInfo() {
                         },
                         angleLines: {
                             color: 'black'
-                        }
+                        },
                     }
-                }
+                },
             });
-
         });
     //giphy API call
     $.ajax({
         url: queryURLTwo,
         method: "GET"
         }).then(function(response) {
-            console.log(response);
             for (i=0; i < 3; i++){
             var imageUrl = response.data[i].images.original.url;
-
-          // Creating and storing an image tag
             var heroImage = $("<img>");
-
-            // Setting the catImage src attribute to imageUrl
             heroImage.attr("src", imageUrl);
             heroImage.attr("alt", "hero image");
-
-            // Prepending the catImage to the images div
             $("#gif-div"+i).empty().append(heroImage);
-            $("#gif-div").empty().append(heroImage);
-            $("#gif-div").empty().append(heroImage);
             }
-
         });   
 };
 
-$("#submit-btn").on("click", displayHeroInfo);
-
+$("#submit-btn").on("click", function() {
+        displayHeroInfo($("#search-input").val().toLowerCase());
+});
 
 input.addEventListener("keydown", function (event){
         if (event.keyCode === 13) {
         event.preventDefault();
-        displayHeroInfo();
-        
+        displayHeroInfo($("#search-input").val().toLowerCase());  
     };
- 
- });
+});
