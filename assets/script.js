@@ -1,5 +1,5 @@
 let input = document.querySelector('input');
-var heroArray = ["batman", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
+var heroArray = [];
 // function to pull hero names from .txt file
 $(document).ready(function() {
     searchAutoComplete();
