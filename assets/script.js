@@ -8,19 +8,19 @@ $(document).ready(function() {
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
         heroArray = data.toLowerCase().split("\n");
+        console.log(heroArray);
         $("#search-input").autocomplete({
-            source: heroArray
+            source: heroArray            
         }).focus(function() {
             $(this).autocomplete("search", "");
         });
         // populate gif and info divs with a random character on page load. Pulls from a small set of popular characters
-        var startingHeroes = ["iron man", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
+        var startingHeroes = ["batman", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "rogue", "robin", "black widow"];
         displayHeroInfo(startingHeroes[Math.floor(Math.random() * 11)]);
      });
 };
 
-function displayHeroInfo() {
-    var hero = $("#search-input").val().toLowerCase();
+function displayHeroInfo(hero) {
     var heroId = (heroArray.indexOf(hero) + 1);
     var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/" + heroId;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
@@ -141,11 +141,13 @@ function displayHeroInfo() {
         });   
 };
 
-$("#submit-btn").on("click", displayHeroInfo);
+$("#submit-btn").on("click", function() {
+        displayHeroInfo($("#search-input").val().toLowerCase());
+});
 
 input.addEventListener("keydown", function (event){
         if (event.keyCode === 13) {
         event.preventDefault();
-        displayHeroInfo();  
+        displayHeroInfo($("#search-input").val().toLowerCase());  
     };
 });
