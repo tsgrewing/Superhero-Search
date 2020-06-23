@@ -8,7 +8,6 @@ $(document).ready(function() {
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
         heroArray = data.toLowerCase().split("\n");
-        console.log(heroArray);
         $("#search-input").autocomplete({
             source: heroArray            
         }).focus(function() {
