@@ -1,4 +1,5 @@
 let input = document.querySelector('input');
+var userInput = $("#search-input");
 var heroArray = [];
 // function to pull hero names from .txt file
 $(document).ready(function() {
@@ -8,7 +9,7 @@ $(document).ready(function() {
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
         heroArray = data.toLowerCase().split("\n");
-        $("#search-input").autocomplete({
+        userInput.autocomplete({
             source: heroArray            
         }).focus(function() {
             $(this).autocomplete("search", "");
@@ -137,16 +138,18 @@ function displayHeroInfo(hero) {
             heroImage.attr("alt", "hero image");
             $("#gif-div"+i).empty().append(heroImage);
             }
-        });   
+        });      
 };
 
 $("#submit-btn").on("click", function() {
-        displayHeroInfo($("#search-input").val().toLowerCase());
+        displayHeroInfo(userInput.val().toLowerCase());
+        userInput.val('');
 });
 
 input.addEventListener("keydown", function (event){
         if (event.keyCode === 13) {
         event.preventDefault();
-        displayHeroInfo($("#search-input").val().toLowerCase());  
+        displayHeroInfo(userInput.val().toLowerCase());
+        userInput.val('');
     };
 });
