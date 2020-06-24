@@ -1,4 +1,6 @@
-
+let input = document.querySelector('input');
+var userInput = $("#search-input");
+var heroArray = [];
 // function to pull hero names from .txt file
 $(document).ready(function() {
     searchAutoComplete();
@@ -6,46 +8,31 @@ $(document).ready(function() {
 // this function provides a dropdown autocomplete menu on the search bar
 function searchAutoComplete() {
     jQuery.get('assets/heros.txt', function(data) {
-        console.log(data.split("\n"));
-        var heroArray = data.split("\n");
+        heroArray = data.toLowerCase().split("\n");
         $("#search-input").autocomplete({
-            source: heroArray
+            source: heroArray            
         }).focus(function() {
             $(this).autocomplete("search", "");
         });
+        // populate gif and info divs with a random character on page load. Pulls from a small set of popular characters
+        var startingHeroes = ["iron man", "deadpool", "thor", "spider-man", "wonder woman", "joker", "harley quinn", "nick fury", "black panther", "black widow"];
+        displayHeroInfo(startingHeroes[Math.floor(Math.random() * 11)]);
      });
 };
-console.log(searchAutoComplete);
 
-let input = document.querySelector('input');
-
-
-//Function to capitalise first character for strings
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-function displayHeroInfo() {
-    var hero = $("#search-input").val(); 
-    var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/search/" + hero;
+function displayHeroInfo(hero) {
+    var heroId = (heroArray.indexOf(hero) + 1);
+    var queryURLOne = "https://www.superheroapi.com/api.php/10158163759470734/" + heroId;
     var queryURLTwo = "https://api.giphy.com/v1/gifs/search?api_key=UZ1q06vU6ySOGMpaTwRtjIXmWHoGeJjg&q=" + hero + "&limit=5&offset=0&rating=G&lang=en";
-    // Set Background of info divs
-    var backgroundColors = [];
 
     $.ajax({
         url: queryURLOne,
         method: "GET"
         }).then(function(response) {
-            console.log(response);
-            // this section will populate the powers-div with the hero's powerstats
-            // var chartDiv = $("#chart-div");
-            // var powerStats = JSON.stringify(response.results[0].powerstats);
-            // var powerPtag = $("<p>").text(powerStats);
-            // chartDiv.append(powerPtag);
-            // this section will populate the bio-div with the hero's biography
             var bioDiv = $("#bio-div");
-            var biography = response.results[0].biography;
-            var appearance = response.results[0].appearance;
-            var connections = response.results[0].connections;
+            var biography = response.biography;
+            var appearance = response.appearance;
+            var connections = response.connections;
             var bioList = $("<ul>").css("list-style-type", "disc").css("list-style-position", "inside").css("margin-left", "10px");
             var fullName = $("<li>").html("<span class='has-text-weight-bold'>Full Name: </span>" + biography["full-name"]);
             var aliases = $("<li>").html("<span class='has-text-weight-bold'>Aliases: </span>" + biography.aliases.join(', '));
@@ -66,7 +53,6 @@ function displayHeroInfo() {
             var publisher = $("<li>").html("<span class='has-text-weight-bold'>Publisher: </span>" + biography.publisher);
             var firstSeen = $("<li>").html("<span class='has-text-weight-bold'>First Appearance: </span>" + biography["first-appearance"]);
             var teams = connections['group-affiliation'].split(', ');
-            console.log(teams)
             if (teams.length > 3) {
                 teams = $("<li>").html("<span class='has-text-weight-bold'>Notable Affiliation(s): </span>" + teams.slice(0, 3).join(', '));
             }
@@ -82,7 +68,7 @@ function displayHeroInfo() {
 
             // this section will populate the hero-pic 
             var heroArticle = $("#hero-pic");
-            var heroPic = response.results[0].image.url;
+            var heroPic = response.image.url;
             var heroImgTag = $("<img>");
             heroImgTag.attr("src", heroPic);
             heroImgTag.attr("alt", "hero image");
@@ -100,13 +86,12 @@ function displayHeroInfo() {
             // chart settings
             var ctx = document.getElementById('myChart').getContext('2d');
             Chart.defaults.global.defaultFontColor = 'black';
-            Chart.defaults.global.defaultFontSize = 12;
+            Chart.defaults.global.defaultFontSize = 16;
             Chart.defaults.global.defaultFontStyle = 'bold';
             Chart.defaults.global.defaultFontFamily = "Walter Turncoat";
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
                 type: 'radar',
-            
                 // The data for our dataset
                 data: {
                     labels: ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat', ],
@@ -115,12 +100,19 @@ function displayHeroInfo() {
                         backgroundColor: 'rgba(0, 0, 0, 0.1)',
                         borderColor: 'rgb(255, 99, 132)',
                         data: [intel, strength, speedd, dura, powerr, combatt,],
-                        
                     }]
                 },
-            
                 // Configuration options go here
                 options: {
+                    title: {
+                            display: true,
+                            text: 'Power Stats',
+                            fontFamily: "Bangers, cursive",
+                            fontSize: 32,
+                        },
+                        legend : {
+                            display: false,
+                        },
                     maintainAspectRatio: false,
                     scale: {
                         gridLines: {
@@ -128,45 +120,34 @@ function displayHeroInfo() {
                         },
                         angleLines: {
                             color: 'black'
-                        }
+                        },
                     }
-                }
+                },
             });
-
         });
     //giphy API call
     $.ajax({
         url: queryURLTwo,
         method: "GET"
         }).then(function(response) {
-            console.log(response);
             for (i=0; i < 3; i++){
             var imageUrl = response.data[i].images.original.url;
-
-          // Creating and storing an image tag
             var heroImage = $("<img>");
-
-            // Setting the catImage src attribute to imageUrl
             heroImage.attr("src", imageUrl);
             heroImage.attr("alt", "hero image");
-
-            // Prepending the catImage to the images div
             $("#gif-div"+i).empty().append(heroImage);
-            $("#gif-div").empty().append(heroImage);
-            $("#gif-div").empty().append(heroImage);
             }
-
         });   
 };
 
-$("#submit-btn").on("click", displayHeroInfo);
+$("#submit-btn").on("click", function() {
+        displayHeroInfo(userInput.val().toLowerCase());
+        userInput.val('');
+});
 
-// Functionality for enter button
-document.querySelector('input').addEventListener("keydown", function (event){
+input.addEventListener("keydown", function (event){
         if (event.keyCode === 13) {
         event.preventDefault();
-        displayHeroInfo();
-        
+        displayHeroInfo(userInput.val().toLowerCase());  
     };
- 
- });
+});

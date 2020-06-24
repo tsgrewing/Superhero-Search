@@ -1,30 +1,35 @@
 html {
     background-color:#b6ac7785;
     background-image: url('images/old paper wide.png');
-    background-blend-mode: exclusion;
+    background-blend-mode: darken;
     background-size: cover;
 }
 
+body{
+    color: black;
+    padding-bottom: 20px;
+}
+
+/* Super hero Search header */
 #header {
     padding: 25px;
     text-shadow: 5px 5px #c24f4f;
     text-align: center;
     margin-bottom: 0;
-    /* background-color: rgb(194, 79, 79); */
 }
+
 h1 {
     font-family: "Bangers", cursive;
     font-size: 10rem;
     color: #d1be16;
     text-shadow: -10px 8px #c24f4f;
     line-height: 1;
-    -ms-transform: skewY(-5deg); /* IE 9 */
+    -ms-transform: skewY(-5deg); /* IE 9 compatibility */
     transform: skewY(-5deg);
     margin-top: .75rem;
     -webkit-text-stroke: 5px #000000;
-    /* mix-blend-mode: color-burn; */
 }
-
+/* Search bar(between header and tiles */
 #search-bar {
     background-image: url("images/old paper wide.png");
     background-position: center;
@@ -38,6 +43,7 @@ h1 {
     border: 5px solid black;
     text-align: center;
 }
+/* submit button styling */
 #submit-btn {
     background-image: url("images/old paper wide.png");
     background-position: center;
@@ -48,6 +54,7 @@ h1 {
     margin-right: 10px;
     border: 1px solid black;
 }
+/* search input styling */
 input[type="text"], textarea {
     background-image: url("images/old paper.png");
     background-position: center;
@@ -59,15 +66,9 @@ input[type="text"], textarea {
     border: 1px solid black;
 }
 
-body{
-    color: black;
-    padding-bottom: 20px;
-}
+/* word wrapping for info divs */
 #bio-div {
     word-break: break-word;
-}
-#chart-div {
-    word-break: break-all;
 }
 
 #powers-div {
@@ -81,6 +82,7 @@ ul {
     list-style-position: inside;
 }
 
+/* styling titles */
 #main-info .subtitle {
     text-align: center;
 }
@@ -95,6 +97,7 @@ ul {
     color: black;
 }
 
+/* styling tiles/boxes to resemble a comic book */
 .tile.is-vertical>.tile.is-child:not(:last-child) {
     margin-bottom: .3rem!important;
 }
@@ -126,6 +129,24 @@ ul {
     background-color: #000000;
     background-blend-mode: darken;
 }
+
+#bio-box {
+    background-color: #02e1ff93;
+}
+
+#pub-box {
+    background-color: #02ff1793;
+}
+
+#pic-box {
+    background-color: #ff9a0293;
+}
+
+#chart-box {
+    background-color: #000000;
+}
+
+/* hero title section backgrounds and borders */
 #hero-name {
     background-image: url("images/old paper.png");
     background-position: center;
@@ -159,22 +180,6 @@ ul {
     margin-left: 5rem;
     border-bottom: 5px solid black;
     border-left: 5px solid black;
-}
-
-#bio-box {
-    background-color: #02e1ff93;
-}
-
-#pub-box {
-    background-color: #02ff1793;
-}
-
-#pic-box {
-    background-color: #ff9a0293;
-}
-
-#chart-box {
-    background-color: #000000;
 }
 
 /* footer styles */
