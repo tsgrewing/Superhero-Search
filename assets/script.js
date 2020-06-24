@@ -1,5 +1,4 @@
 let input = document.querySelector('input');
-var userInput = $("#search-input");
 var heroArray = [];
 // function to pull hero names from .txt file
 $(document).ready(function() {
@@ -75,15 +74,16 @@ function displayHeroInfo(hero) {
             heroArticle.empty().append(heroImgTag);
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
-            heroPtag.addClass("is-size-4").text(capitalizeFirstLetter(hero));
-            // variables for chart
-            var intel = response.results[0].powerstats.intelligence
-            var strength = response.results[0].powerstats.strength
-            var speedd = response.results[0].powerstats.speed
-            var dura = response.results[0].powerstats.durability
-            var powerr = response.results[0].powerstats.power
-            var combatt = response.results[0].powerstats.combat
-            // chart settings
+            heroPtag.addClass("is-size-4").text(response.name);
+            // Render chart of characters attributes
+            var intel = response.powerstats.intelligence
+            var strength = response.powerstats.strength
+            var speedd = response.powerstats.speed
+            var dura = response.powerstats.durability
+            var powerr = response.powerstats.power
+            var combatt = response.powerstats.combat
+            $('#myChart').remove();
+            $('#chart-box').prepend('<canvas id="myChart"></canvas>');
             var ctx = document.getElementById('myChart').getContext('2d');
             Chart.defaults.global.defaultFontColor = 'black';
             Chart.defaults.global.defaultFontSize = 16;
@@ -141,14 +141,12 @@ function displayHeroInfo(hero) {
 };
 
 $("#submit-btn").on("click", function() {
-        displayHeroInfo(userInput.val().toLowerCase());
-        userInput.val('');
+        displayHeroInfo($("#search-input").val().toLowerCase());
 });
 
 input.addEventListener("keydown", function (event){
         if (event.keyCode === 13) {
         event.preventDefault();
-        displayHeroInfo(userInput.val().toLowerCase());  
-        userInput.val('');
+        displayHeroInfo($("#search-input").val().toLowerCase());  
     };
 });
