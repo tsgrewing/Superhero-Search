@@ -90,14 +90,14 @@ function displayHeroInfo() {
             // this section will change the hero's name on the page
             var heroPtag = $("#hero-name");
             heroPtag.addClass("is-size-4").text(capitalizeFirstLetter(hero));
-        
+            // variables for chart
             var intel = response.results[0].powerstats.intelligence
             var strength = response.results[0].powerstats.strength
             var speedd = response.results[0].powerstats.speed
             var dura = response.results[0].powerstats.durability
             var powerr = response.results[0].powerstats.power
             var combatt = response.results[0].powerstats.combat
-
+            // chart settings
             var ctx = document.getElementById('myChart').getContext('2d');
             Chart.defaults.global.defaultFontColor = 'black';
             Chart.defaults.global.defaultFontSize = 12;
@@ -161,8 +161,8 @@ function displayHeroInfo() {
 
 $("#submit-btn").on("click", displayHeroInfo);
 
-
-input.addEventListener("keydown", function (event){
+// Functionality for enter button
+document.querySelector('input').addEventListener("keydown", function (event){
         if (event.keyCode === 13) {
         event.preventDefault();
         displayHeroInfo();
