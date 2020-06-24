@@ -33,7 +33,7 @@
     <!-- container for bio, chart and gif containers -->
     <div class="container level" id="main-container">
 
-        <!-- Main info container for Pic, bio and powers, etc -->
+        <!-- Main info container for Pic, bio and publication tiles -->
         <div class="tile is-ancestor">
             <div class="tile" id="main-info">
                 <div class="tile is-6 is-vertical is-parent">
@@ -55,22 +55,19 @@
                 </div>
             </div>
         
-
-        
-            <!-- Chart div to hold the stat chart and the key to the chart -->
-            <div class="tile is-vertical is-parent is-3" id="gif-container">
+            <!-- div to hold the stat chart tile above a gif tile -->
+            <div class="tile is-vertical is-parent is-3" id="middle-div">
                 <div class="tile is-child box" id="chart-box" >
                     <canvas id="myChart"></canvas>
                 </div>
-
                 <div class="tile is-child box gifbox">
                     <figure class="image" id="gif-div1">
                     </figure>
                 </div>
             </div>
 
-            <!-- gif container to hold gifs/gif carousel -->
-            <div class="tile" id="chart-div">
+            <!-- gif container to hold 2 stacked gif tiles -->
+            <div class="tile" id="gif-div">
                 <div class="tile is-parent is-vertical">
                     <div class="tile is-child box gifbox">
                         <figure class="image" id="gif-div0">
