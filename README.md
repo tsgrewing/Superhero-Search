@@ -5,7 +5,7 @@
 An app for users to search for a super hero and be given the hero's basic information, a chart of their stats, and an assortment of gifs based on their name.
 
 ## Demo
-!(Demo gif)[assets/images/superdemo.gif]
+![Demo gif](assets/images/superdemo.gif)
 
 ## User Story
 As a fan of fictional characters, I want to be able to search for characters from multiple different publishers and be given information on the character, along with related gifs.
